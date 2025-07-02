@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CTF Platform{% endblock %}</title>
+    <!-- Include CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="script.js"></script>
+    <link rel="icon" href="logo.png" type="image/png">
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div>
+            <a href="/">Home</a>
+            <a href="/scoreboard">Scoreboard</a>
+            <a href="/challenges">Challenges</a>
+        </div>
+        <div>
+            {% if 'loggedin' in session %}
+            <span class="text-light">User: <strong>{{ session['username'] }}</strong></span>
+            <span class="text-warning">| Points: {{ session['points'] }}</span>
+            <a href="/logout" class="text-danger">Logout</a>
+            {% else %}
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div id="controls">    
+        <section class="wrapper">
+            <div id="stars"></div>
+            <div id="stars2"></div>
+            <div id="stars3"></div>
+            <div id="title">
+        </section>
+        <!-- Main Content -->
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

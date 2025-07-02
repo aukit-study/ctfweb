@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}Scoreboard{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="scoreboard-container">
+        <h1 class="scoreboard-title">./scoreboard</h1>
+        <div class="table-wrapper">
+            <table class="scoreboard-table">
+                <thead>
+                    <tr>
+                        <th>Place</th>
+                        <th>User</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ loop.index }}</td> <!-- Use loop.index for 1-based index -->
+                        <td>{{ user['username'] }}</td>
+                        <td>{{ user['score'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
