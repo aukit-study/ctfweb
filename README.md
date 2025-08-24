@@ -1,17 +1,29 @@
 ﻿# ctfweb
 1.นำเข้า sql database  ที่ชื่อว่า ctf_web
 
-2.ตั้งค่า  app.config['MYSQL_HOST'] = 'localhost'
-        app.config['MYSQL_USER'] = 'root'
-        app.config['MYSQL_PASSWORD'] = ''
-        app.config['MYSQL_DB'] = 'ctf_web'
+2.ตั้งค่า  
+app.config['MYSQL_HOST'] = 'localhost'
+        
+app.config['MYSQL_USER'] = 'root'
+        
+app.config['MYSQL_PASSWORD'] = ''
+        
+app.config['MYSQL_DB'] = 'ctf_web'
 
-3.python -m venv venv
-  venv\Scripts\activate
-  pip install flask
-  pip install flask flask-mysqldb
-  pip install flask flask-mysqldb pymysql
-  python app.py
 
-(สามารถเข้าไปแก้โจทย์ หรือคำตอบได้ที่ database sql)
+3.ติดตั้ง python
+python -m venv venv
+  
+venv\Scripts\activate
+  
+pip install flask
+  
+pip install flask flask-mysqldb
+  
+pip install flask flask-mysqldb pymysql
+  
+python app.py
+
+***
+สามารถเข้าไปแก้โจทย์ หรือคำตอบได้ที่ database sql
 
