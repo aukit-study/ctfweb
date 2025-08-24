@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="form-container p-4 bg-dark rounded shadow" style="max-width: 400px; width: 100%;">
+        <h2 class="text-center text-success mb-4">Login</h2>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="username" class="form-label text-light">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label text-light">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

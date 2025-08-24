@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}Challenges{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left Sidebar -->
+        <div class="col-md-4">
+            <div class="bg-dark">
+                <h3 class="text-success">Challenges.</h3>
+                <ul class="list-unstyled">
+                    {% for group, challenges in grouped_challenges.items() %}
+                    <li>
+                        <h5 class="text-warning">{{ group }} ({{ challenges|length }})</h5>
+                        <ul>
+                            {% for challenge in challenges %}
+                            <li>
+                                <a href="?challenge_id={{ challenge.id }}" class="text-light">{{ challenge.challenge_name }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Content -->
+        <div class="col-md-8">
+            <div class="bg-dark">
+                <h3 class="text-success">Send Answer / ส่งคำตอบ</h3>
+                {% if current_challenge %}
+                <div class="d-flex justify-content-between">
+                    <h4 class="text-warning">{{ current_challenge[2] }}</h4> <!-- Challenge Name -->
+                    <span class="text-warning">Points: {{ current_challenge[5] }}</span>
+                </div>
+                <p>{{ current_challenge[3] }}</p> <!-- Solve -->
+                {% if message %}
+                <div class="alert {% if 'incorrect' in message.lower() %}alert-danger{% else %}alert-success{% endif %}">
+                    {{ message }}
+                </div>
+                {% endif %}
+                <form method="POST">
+                    <input type="hidden" name="challenge_id" value="{{ current_challenge[0] }}">
+                    <input type="text" name="flag" class="form-control mb-2" placeholder="ICTXURU{...}" required>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+                {% else %}
+                <p>No challenge selected. Please choose from the left.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
